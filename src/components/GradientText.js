@@ -1,6 +1,5 @@
-import React from "react";
 
-  import {Text} from 'grommet';
+import {Text} from 'grommet';
 import styled from "styled-components";
 
 

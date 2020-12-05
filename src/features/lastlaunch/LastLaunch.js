@@ -24,7 +24,7 @@ const LastLaunch = () => {
             <Box gap="small">
                 {launches && (
                     <CardConcave round="small" pad="small">
-                        <Text>{launches.results[0].name}</Text>
+                        <Text>{launches.results && launches.results[0].name}</Text>
                     </CardConcave>
                 )}
             </Box>

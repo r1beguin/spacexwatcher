@@ -1,6 +1,5 @@
-import React from "react";
 
-  import {Box} from 'grommet';
+import {Box} from 'grommet';
 import styled from "styled-components";
 
 
