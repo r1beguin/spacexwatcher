@@ -50,6 +50,7 @@ const LastLaunch = () => {
             </Card>
             {showInfo && (
                 <Layer
+                
                 onEsc={() => setShowInfo(false)}
                 onClickOutside={() => setShowInfo(false)}
                 position="center"
