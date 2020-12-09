@@ -17,7 +17,7 @@ const NavBar = () => {
         <Card round="small" pad={{vertical:"small", horizontal:"medium"}} direction="row" align="center" gap="medium">
             <Link to="/">
                 <MiniButton round="full" height="xxsmall" width="xxsmall" align="center" justify="center" overflow="hidden">
-                    <Box>
+                    <Box height="xxsmall" width="xxsmall">
                         <Image fit="contain" src={logo} />
                     </Box>
                 </MiniButton>

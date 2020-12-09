@@ -10,14 +10,15 @@ import starlink from "./starlink.txt";
 
 import { getLatLngObj, getSatelliteName } from "tle.js";
 import {  Box } from "grommet";
-import { Refresh } from "grommet-icons";
+import { Pause, Play, Refresh } from "grommet-icons";
 
 const LastLaunch = () => {
 
     const [markers, setMarkers] = React.useState([]);
     const [refresh, setRefresh] = React.useState(true);
-    const [globe, setGlobe] = React.useState(null);
-
+    const [globe, setGlobe] = React.useState();
+    const [isPaused, setIsPaused]= React.useState(false);
+    
     const options = {
         globeGlowColor: "#292929",
         enableGlobeGlow: false,
@@ -39,7 +40,7 @@ const LastLaunch = () => {
             
             const marks= []
             stringArray.map((sat, i) => {
-                
+                console.log(i)
                 const name = getSatelliteName(sat);
                 const latLonObj = getLatLngObj(sat);
                 
@@ -63,17 +64,33 @@ const LastLaunch = () => {
             })
             setRefresh(false)
         }
+
         
-    }, [refresh, globe, markers])
+    }, [refresh, markers])
 
     return (
         
             <Card round="small" pad="medium" gap="medium" fill>
                 <Box fill="horizontal" justify="between" direction="row">
                     <GradientText weight="bold" size="medium">Starlink Tracker</GradientText>
-                    <ConcaveButton round pad="small"justify="center" align="center" onClick={() => setRefresh(true)}>
-                        <Refresh size="small" />
-                    </ConcaveButton>
+                    <Box gap="small" direction="row">
+                        {/* {isPaused ? (
+                            <ConcaveButton round pad="small"justify="center" align="center" onClick={() => {globe.unlock();setIsPaused(false)}}>
+                                <Play size="small" />
+                                
+                            </ConcaveButton>
+                        ): (
+                            <ConcaveButton round pad="small"justify="center" align="center" onClick={() => {globe.lock();setIsPaused(true)}}>
+                                <Pause size="small" />
+                            
+                            </ConcaveButton>
+                        )} */}
+                        
+                        <ConcaveButton round pad="small"justify="center" align="center" onClick={() => setRefresh(true)}>
+                            <Refresh size="small" />
+                            
+                        </ConcaveButton>
+                    </Box>
                     
                 </Box>
                 
