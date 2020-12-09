@@ -62,7 +62,7 @@ const LastLaunch = () => {
             setRefresh(false)
         }
         
-    }, [refresh, markers])
+    }, [refresh])
 
     return (
         
