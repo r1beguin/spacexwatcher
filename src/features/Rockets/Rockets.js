@@ -69,7 +69,7 @@ const LastLaunch = () => {
                             
                             {(size !== "small" || showStarship) &&
                             <Card round="small" pad="small" fill onClick={() => setShowStarship(false)}>
-                                <Text weight="bold" size={size}>Starship 9</Text>
+                                <Text weight="bold" size={size}>Starship</Text>
                                 <Text size={size}>height : 122 m</Text>
                                 <Text size={size}>payload leo : 100 000+ kg</Text>
                                 <Text size={size}>payload gto :  tbd</Text>

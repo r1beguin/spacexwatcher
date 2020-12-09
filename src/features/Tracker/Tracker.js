@@ -14,12 +14,13 @@ import { Refresh } from "grommet-icons";
 
 const LastLaunch = () => {
 
-    const [markers, setMarkers] = React.useState();
+    const [markers, setMarkers] = React.useState([]);
     const [refresh, setRefresh] = React.useState(true);
     const [globe, setGlobe] = React.useState(null);
 
     const options = {
         globeGlowColor: "#292929",
+        enableGlobeGlow: false,
         markerTooltipRenderer: marker => `${marker.name}`,
       };
 
@@ -58,11 +59,12 @@ const LastLaunch = () => {
             setMarkers(marks);
             
             globe && globe.updateMarkers(marks);
+            globe && globe.updateMarkers(markers)
             })
             setRefresh(false)
         }
         
-    }, [refresh])
+    }, [refresh, globe, markers])
 
     return (
         
