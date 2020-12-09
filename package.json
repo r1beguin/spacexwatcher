@@ -18,6 +18,7 @@
     "react-custom-scroll": "^4.2.1",
     "react-custom-scrollbars": "^4.2.1",
     "react-dom": "^16.13.1",
+    "react-globe": "^5.0.2",
     "react-leaflet": "^2.7.0",
     "react-leaflet-easyprint": "^2.0.0",
     "react-leaflet-search": "^2.0.1",
@@ -27,7 +28,9 @@
     "react-resizable-box": "^2.1.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3",
-    "styled-components": "^5.2.0"
+    "styled-components": "^5.2.0",
+    "three": "^0.123.0",
+    "tle.js": "^3.1.0"
   },
   "scripts": {
     "start": "react-scripts start",

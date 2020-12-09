@@ -22,7 +22,7 @@ const LastLaunch = () => {
         fetch("https://ll.thespacedevs.com/2.0.0/launch/upcoming/?rocket__configuration__manufacturer__name__icontains=spacex")
         .then(res => res.json())
         .then(data => {data.results && setLaunches(data);
-        console.log(data.results)})
+        })
     }, [])
 
 
@@ -37,7 +37,7 @@ const LastLaunch = () => {
                     <Scrollbars autoHeight autoHide autoHeightMax="100%">
                         {launches && launches.results.map((item, i) => (
 
-                            <CardConcave round="small" pad="small" onClick={()=>{setIndex(i); setShowInfo(true)}}>
+                            <CardConcave round="small" pad="small" onClick={()=>{setIndex(i); setShowInfo(true)}} margin={{vertical:"small"}}>
                                 <Text size={size}>{ item.name}</Text>
                                 <Text size={size}>{ new Date(item.net).toLocaleString("fr-FR")}</Text>
 
