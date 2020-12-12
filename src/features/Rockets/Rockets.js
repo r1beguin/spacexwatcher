@@ -1,9 +1,11 @@
 import React from "react"
 
-import {Box, Image, ResponsiveContext, Text} from "grommet";
+import {Box, Image, ResponsiveContext, Text, Collapsible} from "grommet";
+import {Up, Down} from "grommet-icons";
 
 import Card from "../../components/Card";
 import GradientText from "../../components/GradientText";
+import ConcaveButton from "../../components/ConcaveButton";
 
 import { Scrollbars } from 'react-custom-scrollbars';
 
@@ -18,12 +20,19 @@ const LastLaunch = () => {
     const [showFalcon, setShowFalcon] = React.useState(false);
     const [showHeavy, setShowHeavy] = React.useState(false);
     const [showStarship, setShowStarship] = React.useState(false);
+    const [show, setShow] = React.useState(true);
 
     const size = React.useContext(ResponsiveContext);
     return (
-        
-            <Card round="small" pad="medium" gap="medium" fill>
-                <GradientText weight="bold" size="medium">Space X launchers</GradientText>
+        <Box fill={show}>
+            <Collapsible open={show} direction="vertical">
+            <Card round="small" pad="medium" gap="medium" >
+                <Box height="xsmall" justify="between" direction="row">
+                    <GradientText weight="bold" size="medium">Space X launchers</GradientText>
+                    <ConcaveButton round pad="small"justify="center" align="center" onClick={() => setShow(false)}>
+                        <Up size="small" />        
+                    </ConcaveButton>
+                </Box>
                 <Scrollbars autoHeight autoHide autoHeightMax="100%">
                     <Box gap="small" >
                         <Box height="small" direction="row" gap="small">
@@ -82,7 +91,18 @@ const LastLaunch = () => {
                     </Box>
                 </Scrollbars>
             </Card>
-          
+            </Collapsible>
+            <Collapsible open={!show} direction="vertical">
+                <Card round="small" pad="medium" gap="medium" >
+                    <Box  justify="end" direction="row">
+                        <ConcaveButton round pad="small"justify="center" align="center" onClick={() => setShow(true)}>
+                            <Down size="small" />                      
+                        </ConcaveButton>               
+                    </Box>      
+                </Card>
+            
+            </Collapsible>
+        </Box>
     )
 }
 

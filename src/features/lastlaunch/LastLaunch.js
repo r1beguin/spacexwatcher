@@ -32,7 +32,7 @@ const LastLaunch = () => {
 
     return (
         <>
-        {show ? (
+        
  <Collapsible direction="horizontal" open={show}>
  <Card round="small" pad="medium" gap="medium" fill="vertical" width="large">
  <Box fill="horizontal" justify="between" direction="row">
@@ -80,7 +80,7 @@ const LastLaunch = () => {
      </Layer>
  )}
 </Collapsible>
-        ) :(
+        
             <Collapsible direction="horizontal" open={!show}>
                 <Card round="small" pad="medium" gap="medium" fill="vertical" width="xsmall">
                     <ConcaveButton round pad="small"justify="center" align="center" onClick={() => setShow(true)}>
@@ -89,7 +89,7 @@ const LastLaunch = () => {
                     </ConcaveButton>
                 </Card>
             </Collapsible>
-        )}
+       
        
         </>
     )

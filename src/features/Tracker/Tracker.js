@@ -9,8 +9,8 @@ import ReactGlobe from 'react-globe';
 import starlink from "./starlink.txt";
 
 import { getLatLngObj, getSatelliteName } from "tle.js";
-import {  Box } from "grommet";
-import { Pause, Play, Refresh } from "grommet-icons";
+import {  Box , Collapsible} from "grommet";
+import { Pause, Play, Previous, Refresh , Next, Up, Down} from "grommet-icons";
 
 const LastLaunch = () => {
 
@@ -18,6 +18,8 @@ const LastLaunch = () => {
     const [refresh, setRefresh] = React.useState(true);
     const [globe, setGlobe] = React.useState();
     const [isPaused, setIsPaused]= React.useState(false);
+    const [show, setShow] = React.useState(true)
+
     
     const options = {
         globeGlowColor: "#292929",
@@ -69,34 +71,47 @@ const LastLaunch = () => {
     }, [refresh, markers])
 
     return (
-        
-            <Card round="small" pad="medium" gap="medium" fill>
-                <Box fill="horizontal" justify="between" direction="row">
-                    <GradientText weight="bold" size="medium">Starlink Tracker</GradientText>
-                    <Box gap="small" direction="row">
-                        {/* {isPaused ? (
-                            <ConcaveButton round pad="small"justify="center" align="center" onClick={() => {globe.unlock();setIsPaused(false)}}>
-                                <Play size="small" />
+        <Box fill={show}>
+            <Collapsible open={show} direction="vertical">
+                <Card fill round="small" pad="medium" gap="medium" >
+                    <Box  justify="between" direction="row">
+                        <GradientText weight="bold" size="medium">Starlink Tracker</GradientText>
+                        <Box gap="small" direction="row">
+                            {/* {isPaused ? (
+                                <ConcaveButton round pad="small"justify="center" align="center" onClick={() => {globe.unlock();setIsPaused(false)}}>
+                                    <Play size="small" />
+                                    
+                                </ConcaveButton>
+                            ): (
+                                <ConcaveButton round pad="small"justify="center" align="center" onClick={() => {globe.lock();setIsPaused(true)}}>
+                                    <Pause size="small" />
+                                
+                                </ConcaveButton>
+                            )} */}
+                            
+                            <ConcaveButton round pad="small"justify="center" align="center" onClick={() => setShow(false)}>
+                                <Down size="small" />
                                 
                             </ConcaveButton>
-                        ): (
-                            <ConcaveButton round pad="small"justify="center" align="center" onClick={() => {globe.lock();setIsPaused(true)}}>
-                                <Pause size="small" />
-                            
-                            </ConcaveButton>
-                        )} */}
+                        </Box>
                         
-                        <ConcaveButton round pad="small"justify="center" align="center" onClick={() => setRefresh(true)}>
-                            <Refresh size="small" />
-                            
-                        </ConcaveButton>
                     </Box>
                     
-                </Box>
-                
-                <ReactGlobe onGetGlobe={setGlobe} height="80%" markers={markers} options={options} globeBackgroundTexture={null}/>
-            </Card>
-          
+                    <ReactGlobe onGetGlobe={setGlobe} height="80%" markers={markers} options={options} globeBackgroundTexture={null}/>
+                </Card>
+            
+            </Collapsible>
+            <Collapsible open={!show} direction="vertical">
+                <Card round="small" pad="medium" gap="medium" >
+                    <Box  justify="end" direction="row">
+                        <ConcaveButton round pad="small"justify="center" align="center" onClick={() => setShow(true)}>
+                            <Up size="small" />                      
+                        </ConcaveButton>               
+                    </Box>      
+                </Card>
+            
+            </Collapsible>
+            </Box>
     )
 }
 
